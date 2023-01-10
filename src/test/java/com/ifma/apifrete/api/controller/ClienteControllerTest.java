@@ -15,6 +15,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -81,5 +82,12 @@ public class ClienteControllerTest {
         clienteRepository.deleteById(cliente.getId());
         clienteList = clienteRepository.findAll();
         assertEquals(0,clienteList.size());
+    }
+    @Test
+    public void deveBuscarClientesPeloNome() {
+        List<Cliente> clientes = clienteRepository.findByNomeContaining("Maria");
+        assertEquals("Maria", clientes.get(0).getNome());
+
+
     }
 }
